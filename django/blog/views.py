@@ -36,8 +36,7 @@ def post_add(request):
         return render(request, 'blog/post_add.html')
 
 def post_delete(request, pk):
-
-    post = Post.objects.get(pk=pk)
-    post.delete()
-
+    if request.method == 'POST':
+        post = Post.objects.get(pk=pk)
+        post.delete()
     return redirect('post-list')
