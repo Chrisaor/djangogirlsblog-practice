@@ -43,3 +43,19 @@ def post_delete(request, pk):
             post.delete()
             return redirect('post-list')
         return redirect('post-detail', pk=post.pk)
+
+def post_edit(request, pk):
+    post = Post.objects.get(pk=pk)
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        post.title = title
+        post.content = content
+        post.save()
+
+        return redirect('post-detail', pk=post.pk)
+    context = {
+        'post': post,
+    }
+
+    return render(request, 'blog/post_edit.html', context)
