@@ -9,5 +9,11 @@
 </head>
 <body>
 <h1>POST DETAIL</h1>
+
+<div>
+    <p>published: {{ post.published_date }}</p>
+    <h2><a href="">{{ post.title }}</a></h2>
+    <p>{{ post.content|linebreaksbr }}</p>
+</div>
 </body>
 </html>
